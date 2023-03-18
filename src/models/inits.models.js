@@ -7,8 +7,8 @@ const initModels = () => {
   Users.hasMany(Todos, { foreignKey: "author" });
   Todos.belongsTo(Users, { foreignKey: "author" });
 
-  Categories.hasMany(Todos, { foreignKey: "categoryId" });
-  Todos.belongsTo(Categories, { foreignKey: "categoryId" });
+  Categories.hasMany(Todos, { foreignKey: "category_id" });
+  Todos.belongsTo(Categories, { foreignKey: "category_id" });
 
 };
 

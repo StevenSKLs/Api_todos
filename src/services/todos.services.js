@@ -6,7 +6,7 @@ class TodosServices {
   static async getAll() {
     try {
       const result = await Todos.findAll({
-        attributes: { exclude: ["author", "categoryId"] },
+        attributes: { exclude: ["author", "category_id"] },
         include: [
           {
             model: Users,

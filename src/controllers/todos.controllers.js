@@ -1,25 +1,25 @@
 const TodosServices = require("../services/todos.services");
 
-const getAllTodo = async (req, res) => {
+const getAllTodo = async (req, res, next) => {
   try {
     const todos = await TodosServices.getAll();
     res.json(todos);
   } catch (error) {
-    res.status(400).json(error);
+    next(error);
   }
 };
 
-const createTodo = async (req, res) => {
+const createTodo = async (req, res, next) => {
   try {
     const newTodo = req.body;
     const todo = await TodosServices.create(newTodo);
     res.status(201).json(todo);
   } catch (error) {
-    res.status(400).json(error);
+    next(error);
   }
 };
 
-const updateTodo = async (req, res) => {
+const updateTodo = async (req, res, next) => {
   try {
     
     const { id } = req.params;
@@ -27,7 +27,7 @@ const updateTodo = async (req, res) => {
     await TodosServices.update(newData, id);
     res.status(204).send();
   } catch (error) {
-    res.status(400).json(error);
+    next(error);
   }
 };
 

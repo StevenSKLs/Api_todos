@@ -10,7 +10,7 @@ const Todos = db.define(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.STRING(70),
+      type: DataTypes.STRING(50),
       allowNull: false,
     },
     author: {
@@ -21,14 +21,13 @@ const Todos = db.define(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    categoryId: {
+    category_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: "category_id", 
     },
-    state:{
+    pending_status:{
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: true,
     },
   },
   {

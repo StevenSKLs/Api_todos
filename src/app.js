@@ -5,6 +5,8 @@ const db = require("./utils/database")
 const initModels = require("./models/initModels")
 const userRoutes = require("./routes/user.routes")
 const todosRoutes = require("./routes/todos.routes")
+const errorRouter = require('./routes/errorHamdle.routes')
+const catergoryRouter = require('./routes/category.routes')
 
 initModels()
 
@@ -27,10 +29,17 @@ db.sync({ alter: false })
 
 app.use(userRoutes)
 app.use(todosRoutes)
+app.use(catergoryRouter)
 
 app.get("/", (req, res) => {
   res.send("Welcome to your task API")
 })
+
+// app.use((error, req, res, next) => {
+//   res.status(400).json(error);
+// });
+
+errorRouter(app)
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
